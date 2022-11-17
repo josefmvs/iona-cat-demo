@@ -14,7 +14,16 @@ export interface CountState {
 }
 
 const catsReducer = (state: CountState, action: CountAction): CountState => {
-    switch (action.type) {
+    const { type, payload } = action;
+    switch (type) {
+        case CountActionKind.INCREASE:
+        return {
+            count: state.count + payload,
+        };
+        case CountActionKind.DECREASE:
+        return {
+            count: state.count - payload,
+        };
         default:
             return state;
     }
