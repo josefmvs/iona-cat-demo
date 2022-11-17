@@ -1,0 +1,49 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard-with-typescript"
+    ],
+    "overrides": [
+       
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react"
+    ],
+    "ignorePatterns": ["*.d.ts"],
+    "rules": {
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/quotes": "off",
+        "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/space-infix-ops": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "comma-dangle": "off",
+        "eol-last": "off",
+        "import/no-unused-modules": "off",
+        "indent": "off",
+        "linebreak-style": "off",
+        "jest/no-done-callback": "off",
+        "no-console": "off",
+        "no-param-reassign": "off",
+        "no-trailing-spaces": "off",
+        "no-use-before-define": "off",
+        "no-warning-comments": "off",
+        "quote-props": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "semi": "off"
+    }
+}
