@@ -3,7 +3,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { CatDetail } from './components/CatDetail';
+import './App.scss';
+import { CatDetail } from './components/cats/CatDetail';
 import { CatsBrowserPage } from './components/cats/CatsBrowserPage';
 
 const router = createBrowserRouter([
