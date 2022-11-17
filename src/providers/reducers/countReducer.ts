@@ -8,12 +8,11 @@ export interface CountAction {
     payload: number
 }
   
-  // An interface for our state
 export interface CountState {
     count: number
 }
 
-const catsReducer = (state: CountState, action: CountAction): CountState => {
+const countReducer = (state: CountState, action: CountAction): CountState => {
     const { type, payload } = action;
     switch (type) {
         case CountActionKind.INCREASE:
@@ -29,4 +28,4 @@ const catsReducer = (state: CountState, action: CountAction): CountState => {
     }
 };
 
-export default catsReducer;
+export default countReducer;

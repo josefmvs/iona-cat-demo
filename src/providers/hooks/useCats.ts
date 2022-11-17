@@ -3,12 +3,12 @@ import { useReducer } from 'react';
 import catsReducer, { CountActionKind } from '../reducers/catsReducer';
 import { ICatContextType } from '../../@types/cat';
 
-function useUser (): ICatContextType {
+function useCats (): ICatContextType {
     const [{ count }, dispatch] = useReducer(catsReducer, {
         count: 0
     });
 
-    function addCount (value: number): void { 
+    const addCount = async (value: number): Promise<void> => { 
         dispatch({ type: CountActionKind.INCREASE, payload: value });
     }
 
@@ -19,4 +19,4 @@ function useUser (): ICatContextType {
     return { count, addCount, decreaseCount };
 }
 
-export default useUser;
+export default useCats;
