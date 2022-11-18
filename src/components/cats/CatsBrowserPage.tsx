@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Button, Container, Row, Col, Form } from 'react-bootstrap';
-import { CatList } from "./CatList";
+// import { CatList } from "./CatList";
 import { CatContext } from '../../providers/catsprovider';
 import { ICatContextType } from "../../@types/cat";
 
 export const CatsBrowserPage: React.FunctionComponent = () => {
-  const { count, addCount, decreaseCount } = useContext(CatContext) as ICatContextType;
+  const { cats, setCats } = useContext(CatContext) as ICatContextType;
 
   return (
     <Container>
-        <h2>Cat Browser Count: {count}</h2>
+        <h2>Cat Browser Count: {cats.length}</h2>
         <Row className="searchBreed">
           <Col lg="3">
             <Form>
@@ -19,9 +19,15 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
             </Form>         
           </Col>
         </Row> 
-        <CatList></CatList>
-        <Button variant="primary" onClick={() => addCount(2)}>Add</Button>
-        <Button variant="primary" onClick={() => decreaseCount(2)}>Decrease</Button>
+        <ul>
+          {cats.map((cat) =>
+            <li key={cat.id}>
+              {cat.name} {cat.description}
+            </li>
+          )}
+        </ul>
+        
+        <Button variant="primary" onClick={() => setCats()}>Decrease</Button>
     </Container>
   );
 }

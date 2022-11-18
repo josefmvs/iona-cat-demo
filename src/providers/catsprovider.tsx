@@ -10,15 +10,13 @@ export const CatContext = createContext<ICatContextType | null>(null);
 
 export const CatContextProvider = ({ children }: Props): JSX.Element => {
   const {
-    count,
-    addCount,
-    decreaseCount,
+    cats,
+    setCats
   } = useCats();
 
   const provider = {
-    count,
-    addCount,
-    decreaseCount
+    cats,
+    setCats
   };
 
   return (

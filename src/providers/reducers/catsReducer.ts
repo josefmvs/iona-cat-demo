@@ -1,27 +1,24 @@
-export enum CountActionKind {
-    INCREASE = 'INCREASE',
-    DECREASE = 'DECREASE',
+import { ICatType } from "../../@types/cat";
+
+export enum CatsActionKind {
+    GET_CATS = 'GET_CATS'
 }
 
-export interface CountAction {
-    type: CountActionKind
-    payload: number
+export interface CatsAction {
+    type: CatsActionKind
+    payload: ICatType[]
+}
+
+export interface CatsState {
+    cats: ICatType[]
 }
   
-export interface CountState {
-    count: number
-}
-
-const catsReducer = (state: CountState, action: CountAction): CountState => {
+const catsReducer = (state: CatsState, action: CatsAction): CatsState => {
     const { type, payload } = action;
     switch (type) {
-        case CountActionKind.INCREASE:
+        case CatsActionKind.GET_CATS:
         return {
-            count: state.count + payload,
-        };
-        case CountActionKind.DECREASE:
-        return {
-            count: state.count - payload,
+            cats: payload,
         };
         default:
             return state;

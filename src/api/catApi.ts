@@ -1,18 +1,21 @@
 
 import axios from 'axios'; 
+import { ICatType } from '../@types/cat';
 
 const breedsUrl = "https://api.thecatapi.com/v1/breeds/";
 // const searchImagesUrl = "https://api.thecatapi.com/v1/images/search";
 
-export async function getCatBreeds (): Promise<any> {
+export async function getCatBreeds (): Promise<ICatType[]> {
     const _url = breedsUrl;
 
-    return await axios({
-    method: 'get',
-    url: _url
-    }).then(
-        function (response) {
-            return response;
-        }
+    const { data } = await axios.get(
+        _url,
+        {
+            headers: {
+            Accept: 'application/json',
+            },
+        },
     );
+
+    return data;
 }

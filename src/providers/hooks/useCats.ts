@@ -1,22 +1,21 @@
 import { useReducer } from 'react';
 // reducer
-import catsReducer, { CountActionKind } from '../reducers/catsReducer';
+import catsReducer, { CatsActionKind } from '../reducers/catsReducer';
+// import countReducer, { CountActionKind } from '../reducers/countReducer';
 import { ICatContextType } from '../../@types/cat';
+import { getCatBreeds } from '../../api/catApi';
 
 function useCats (): ICatContextType {
-    const [{ count }, dispatch] = useReducer(catsReducer, {
-        count: 0
+    const [{ cats }, dispatch] = useReducer(catsReducer, {
+        cats: []
     });
 
-    const addCount = async (value: number): Promise<void> => { 
-        dispatch({ type: CountActionKind.INCREASE, payload: value });
+    const setCats = async (): Promise<void> => { 
+        const breeds = await getCatBreeds();
+        dispatch({ type: CatsActionKind.GET_CATS, payload: breeds });
     }
 
-    function decreaseCount (value: number): void {
-        dispatch({ type: CountActionKind.DECREASE, payload: value });
-    }
-
-    return { count, addCount, decreaseCount };
+    return { cats, setCats };
 }
 
 export default useCats;
