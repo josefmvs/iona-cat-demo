@@ -1,4 +1,4 @@
-import { ICatType } from "../../@types/cat";
+import { ICatsCollection, ICatType } from "../../@types/cat";
 
 export enum CatsActionKind {
     GET_CATS = 'GET_CATS'
@@ -9,11 +9,7 @@ export interface CatsAction {
     payload: ICatType[]
 }
 
-export interface CatsState {
-    cats: ICatType[]
-}
-  
-const catsReducer = (state: CatsState, action: CatsAction): CatsState => {
+const catsReducer = (state: ICatsCollection, action: CatsAction): ICatsCollection => {
     const { type, payload } = action;
     switch (type) {
         case CatsActionKind.GET_CATS:

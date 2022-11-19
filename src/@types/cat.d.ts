@@ -1,30 +1,48 @@
-export interface ICatContextType {
+export interface ICatContextType extends IBreedContextType {
     cats: ICatType[]
-    // addCount: (value: number) => void
     setCats: () => void
-    // addCount: (value: number) => void
-    // decreaseCount: (value: number) => void
+    breeds: IBreedType[]
+    setBreeds: () => void
+    selectBreed: (param: ICatBrowserState) => void
+    selectedBreed?: IBreedType
 }
 
-export interface ICountContextType {
-    count: number
-    addCount: (value: number) => void
-    decreaseCount: (value: number) => void
+interface ICatBrowserState {
+    page: number
+    limit: number
+    breed: string
+    loadMore: boolean
 }
+
+// export interface IBreedContextType {
+//     breeds: IBreedType[]
+//     setBreeds: () => void
+//     selectBreed: () => void
+// }
 
 export interface ICatType {
     id: string
     name: string
     description: string
-    testdesc: string
 } 
 
-export interface IGetUsersResponse {
-    data: ICatType[]
+export interface IBreedType {
+    id: string
+    name: string
+    description: string
+} 
+
+export interface ICatsCollection {
+    cats: ICatType[]
 };
 
-// export interface ICatType {
-//     count: number
-//     addCount: (value: number) => void
-//     decreaseCount: (value: number) => void
-// }
+export interface IBreedsCollection {
+    breeds: IBreedType[],
+    selectedBreed?: IBreedType
+};
+// for deletion
+export interface ICountContextType {
+    count: number
+    addCount: (value: number) => void
+    decreaseCount: (value: number) => void
+}
