@@ -16,7 +16,7 @@ const breedsReducer = (state: IBreedsCollection, action: ICatsAction): IBreedsCo
         case BreedsActionKind.GET_BREEDS:
             return { ...state, breeds: payload };
         case BreedsActionKind.SELECT_BREED:
-            return { ...state, selectedBreed: payload };
+            return { ...state, breedCats: payload };
         default:
             return state;
     }

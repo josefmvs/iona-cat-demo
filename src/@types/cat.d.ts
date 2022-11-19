@@ -1,9 +1,10 @@
 export interface ICatContextType extends IBreedContextType {
-    cats: ICatType[]
-    setCats: () => void
+    // cats: IBreedType[]
+    // setCats: () => void
     breeds: IBreedType[]
     setBreeds: () => void
-    selectBreed: (param: ICatBrowserState) => void
+    selectBreedCats: (param: ICatBrowserState) => void
+    breedCats: ICatType[]
     selectedBreed?: IBreedType
 }
 
@@ -22,8 +23,7 @@ interface ICatBrowserState {
 
 export interface ICatType {
     id: string
-    name: string
-    description: string
+    url: string
 } 
 
 export interface IBreedType {
@@ -38,6 +38,7 @@ export interface ICatsCollection {
 
 export interface IBreedsCollection {
     breeds: IBreedType[],
+    breedCats: ICatType[],
     selectedBreed?: IBreedType
 };
 // for deletion

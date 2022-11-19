@@ -12,10 +12,10 @@ export interface CatsAction {
 const catsReducer = (state: ICatsCollection, action: CatsAction): ICatsCollection => {
     const { type, payload } = action;
     switch (type) {
-        case CatsActionKind.GET_CATS:
-        return {
-            cats: payload,
-        };
+        // case CatsActionKind.GET_CATS:
+        // return {
+        //     cats: payload,
+        // };
         default:
             return state;
     }

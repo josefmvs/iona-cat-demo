@@ -3,10 +3,11 @@ import { Container, Row, Col, Form } from 'react-bootstrap';
 // import { CatList } from "./CatList";
 import { CatContext } from '../../providers/catsprovider';
 import { ICatBrowserState, ICatContextType } from "../../@types/cat";
+import { CatList } from "./CatList";
 // import { CatList } from "./CatList";
 
 export const CatsBrowserPage: React.FunctionComponent = () => {
-  const { breeds, setBreeds, selectBreed } = useContext(CatContext) as ICatContextType;
+  const { breeds, setBreeds, selectBreedCats, breedCats } = useContext(CatContext) as ICatContextType;
   // const [loading, setLoading] = useState<boolean>(true);
   const [catBrowserState] = useState<ICatBrowserState>({
     page: 1,
@@ -22,7 +23,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
   const selectCatBreed = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     console.log(event.currentTarget.value);
     const params = { breed: event.currentTarget.value, page: catBrowserState.page, limit: catBrowserState.limit, loadMore: catBrowserState.loadMore }
-    selectBreed(params);
+    selectBreedCats(params);
   }
 
   return (
@@ -43,7 +44,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
             </Form>         
           </Col>
         </Row> 
-        {/* <CatList cats={cats}></CatList> */}
+        <CatList cats={breedCats}></CatList>
         {/* <Button variant="primary" onClick={() => setBreeds()}>Get Cats</Button> */}
     </Container>
   );

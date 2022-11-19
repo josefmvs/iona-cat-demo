@@ -11,11 +11,10 @@ export const CatContext = createContext<ICatContextType | null>(null);
 
 export const CatContextProvider = ({ children }: Props): JSX.Element => {
   const {
-    cats,
-    setCats,
     breeds,
     setBreeds,
-    selectBreed
+    selectBreedCats,
+    breedCats
   } = useCats();
 
   // const {
@@ -25,11 +24,10 @@ export const CatContextProvider = ({ children }: Props): JSX.Element => {
   // } = useBreeds();
 
   const provider = {
-    cats,
-    setCats,
     breeds,
     setBreeds,
-    selectBreed
+    selectBreedCats,
+    breedCats
   };
 
   return (
