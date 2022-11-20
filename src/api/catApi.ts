@@ -27,21 +27,23 @@ export async function getCatBreeds (): Promise<IBreedType[]> {
 
 export async function getCatsByBreed (payload: ICatBrowserState): Promise<IBreedType[]> {
     const _params = payload;
-    const _url = searchImagesUrl + "?page=" + _params.page.toString() + "&limit=" + _params.limit.toString() + "&breed_id=" + _params.breed;
-
-    try {
-        const { data } = await axios.get(
-            _url,
-            {
-                headers: {
-                Accept: 'application/json',
+    const _url = searchImagesUrl + "?page=" + _params.page.toString() + "&limit=" + _params.limit.toString() + "&breed_id=" + (_params.breed !== undefined ? _params.breed?.id.toString() : '');
+    
+    if (_params.breed !== undefined && _params.breed?.id !== '') {
+        try {
+            const { data } = await axios.get(
+                _url,
+                {
+                    headers: {
+                    Accept: 'application/json',
+                    },
                 },
-            },
-        );
-
-        return data;
-    } catch (error) {
-        handleError(error);
+            );
+    
+            return data;
+        } catch (error) {
+            handleError(error);
+        }
     }
 
     return [];

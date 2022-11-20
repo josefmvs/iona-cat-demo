@@ -28,10 +28,15 @@ function useCats (): ICatContextType {
 
     const selectBreedCats = async (param: ICatBrowserState): Promise<void> => { 
         const breedCats = await getCatsByBreed(param);
-        breedDispatch({ type: BreedsActionKind.SELECT_BREED, payload: breedCats });
+        breedDispatch({ type: BreedsActionKind.SELECT_BREED, payload: { "breed": param.breed, "breedCats": breedCats } });
     }
 
-    return { breeds, setBreeds, selectBreedCats, selectedBreed, breedCats };
+    const loadMoreBreedCats = async (param: ICatBrowserState): Promise<void> => { 
+        const breedCats = await getCatsByBreed(param);
+        breedDispatch({ type: BreedsActionKind.LOAD_MORE, payload: { "breedCats": breedCats } });
+    }
+
+    return { breeds, setBreeds, selectBreedCats, selectedBreed, breedCats, loadMoreBreedCats };
 }
 
 export default useCats;

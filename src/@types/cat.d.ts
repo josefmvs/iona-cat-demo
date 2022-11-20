@@ -6,12 +6,13 @@ export interface ICatContextType extends IBreedContextType {
     selectBreedCats: (param: ICatBrowserState) => void
     breedCats: ICatType[]
     selectedBreed?: IBreedType
+    loadMoreBreedCats: (param: ICatBrowserState) => void
 }
 
 interface ICatBrowserState {
     page: number
     limit: number
-    breed: string
+    breed?: IBreedType
     loadMore: boolean
 }
 
@@ -30,11 +31,13 @@ export interface IBreedType {
     id: string
     name: string
     description: string
+    temperament: string
+    origin: string
 } 
 
 export interface ICatsCollection {
     cats: ICatType[]
-};
+}
 
 export interface IBreedsCollection {
     breeds: IBreedType[],
