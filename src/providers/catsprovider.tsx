@@ -15,7 +15,10 @@ export const CatContextProvider = ({ children }: Props): JSX.Element => {
     selectBreedCats,
     breedCats,
     selectedBreed,
-    loadMoreBreedCats
+    loadMoreBreedCats,
+    showLoadMore,
+    showError
+
   } = useBreeds();
 
   const provider = {
@@ -24,7 +27,9 @@ export const CatContextProvider = ({ children }: Props): JSX.Element => {
     selectBreedCats,
     breedCats,
     selectedBreed,
-    loadMoreBreedCats
+    loadMoreBreedCats,
+    showLoadMore,
+    showError
   };
 
   return (

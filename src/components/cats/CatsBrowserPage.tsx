@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { CatContext } from '../../providers/catsprovider';
 import { ICatBrowserState, ICatContextType, IBreedType } from "../../@types/cat";
 import { CatList } from "./CatList";
 import { useSearchParams } from "react-router-dom";
 
 export const CatsBrowserPage: React.FunctionComponent = () => {
-  const { breeds, setBreeds, selectBreedCats, breedCats, loadMoreBreedCats } = useContext(CatContext) as ICatContextType;
+  const { breeds, setBreeds, selectBreedCats, breedCats, loadMoreBreedCats, showLoadMore, showError } = useContext(CatContext) as ICatContextType;
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
-  // const [setShowLoadMore] = useState<boolean>(true);
   const [catBrowserState, setCatBrowserState] = useState<ICatBrowserState>({
     page: 1,
     limit: 10,
@@ -28,10 +27,6 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
   useEffect(() => {
     if (breedCats.length > 0) {
       setCount(breedCats.length);
-
-      // if (breedCats.length === count) { // || searchParams.get('breed') === undefined) { 
-      //   setShowLoadMore(false);
-      // }
     }
     setLoading(false);
   }, [breedCats]);
@@ -48,7 +43,6 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
     const selectedBreed = breeds.find(a => a.id === id) as IBreedType;
     const params = { breed: selectedBreed, page: 1, limit: catBrowserState.limit, loadMore: catBrowserState.loadMore }
     setLoading(true);
-    // setShowLoadMore(true);
     setCount(0);
     setCatBrowserState({ ...catBrowserState, breed: selectedBreed, page: 1 })
     selectBreedCats(params);
@@ -63,6 +57,13 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
 
   return (
     <Container className="mb-4">
+        {
+          (showError && 
+            <Alert variant='danger'>
+               Apologies but we could not load new cats for you at this time! Miau!
+            </Alert>
+          )
+        }
         <h1>Cat Browser</h1>
         <Row className="searchBreed">
           <Col lg="3">
@@ -91,7 +92,9 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
             )
           }
         </div>
-        <Button className="btn btn-success" disabled={loading} onClick={() => loadMore()}>{loading ? 'Loading...' : 'Load more' }</Button>
+        {
+          showLoadMore && <Button className="btn btn-success" disabled={loading} onClick={() => loadMore()}>{loading ? 'Loading...' : 'Load more' }</Button>
+        }
     </Container>
   );
 }

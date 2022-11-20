@@ -5,6 +5,8 @@ export interface ICatContextType extends IBreedContextType {
     breedCats: ICatType[]
     selectedBreed?: IBreedType
     loadMoreBreedCats: (param: ICatBrowserState) => void
+    showLoadMore: boolean,
+    showError: boolean
 }
 
 interface ICatBrowserState {
@@ -35,4 +37,6 @@ export interface IBreedsCollection {
     breeds: IBreedType[],
     breedCats: ICatType[],
     selectedBreed?: IBreedType
+    showLoadMore: boolean,
+    showError: boolean
 };

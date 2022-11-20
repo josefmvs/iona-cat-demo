@@ -50,6 +50,5 @@ export async function getCatsByBreed (payload: ICatBrowserState): Promise<IBreed
 }
 
 function handleError (error: any): any {
-    // console.error("API call failed. " + error.message.toString());
     throw error;
 }
