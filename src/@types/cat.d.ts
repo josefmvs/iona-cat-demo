@@ -1,6 +1,4 @@
 export interface ICatContextType extends IBreedContextType {
-    // cats: IBreedType[]
-    // setCats: () => void
     breeds: IBreedType[]
     setBreeds: () => void
     selectBreedCats: (param: ICatBrowserState) => void
@@ -15,12 +13,6 @@ interface ICatBrowserState {
     breed?: IBreedType
     loadMore: boolean
 }
-
-// export interface IBreedContextType {
-//     breeds: IBreedType[]
-//     setBreeds: () => void
-//     selectBreed: () => void
-// }
 
 export interface ICatType {
     id: string
@@ -44,9 +36,3 @@ export interface IBreedsCollection {
     breedCats: ICatType[],
     selectedBreed?: IBreedType
 };
-// for deletion
-export interface ICountContextType {
-    count: number
-    addCount: (value: number) => void
-    decreaseCount: (value: number) => void
-}

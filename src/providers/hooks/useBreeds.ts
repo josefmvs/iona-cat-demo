@@ -1,25 +1,13 @@
 import { useReducer } from 'react';
-// reducer
-// import catsReducer, { CatsActionKind } from '../reducers/catsReducer';
-// import countReducer, { CountActionKind } from '../reducers/countReducer';
 import { ICatBrowserState, ICatContextType } from '../../@types/cat';
 import { getCatBreeds, getCatsByBreed } from '../../api/catApi';
 import breedsReducer, { BreedsActionKind } from '../reducers/breedsReducer';
 
-function useCats (): ICatContextType {
-    // const [{ cats }, catDispatch] = useReducer(catsReducer, {
-    //     cats: []
-    // });
-
+function useBreeds (): ICatContextType {
     const [{ breeds, breedCats, selectedBreed }, breedDispatch] = useReducer(breedsReducer, {
         breeds: [],
         breedCats: []
     });
-
-    // const setCats = async (): Promise<void> => { 
-    //     const breeds = await getCatBreeds();
-    //     catDispatch({ type: CatsActionKind.GET_CATS, payload: breeds });
-    // }
 
     const setBreeds = async (): Promise<void> => { 
         const breeds = await getCatBreeds();
@@ -39,4 +27,4 @@ function useCats (): ICatContextType {
     return { breeds, setBreeds, selectBreedCats, selectedBreed, breedCats, loadMoreBreedCats };
 }
 
-export default useCats;
+export default useBreeds;

@@ -6,12 +6,12 @@ export enum BreedsActionKind {
     LOAD_MORE = 'LOAD_MORE'
 }
 
-export interface ICatsAction {
+export interface IBreedsAction {
     type: BreedsActionKind
     payload: any
 }
   
-const breedsReducer = (state: IBreedsCollection, action: ICatsAction): IBreedsCollection => {
+const breedsReducer = (state: IBreedsCollection, action: IBreedsAction): IBreedsCollection => {
     const { type, payload } = action;
     switch (type) {
         case BreedsActionKind.GET_BREEDS:

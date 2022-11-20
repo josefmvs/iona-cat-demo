@@ -10,7 +10,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
-  const [showLoadMore, setShowLoadMore] = useState<boolean>(true);
+  // const [setShowLoadMore] = useState<boolean>(true);
   const [catBrowserState, setCatBrowserState] = useState<ICatBrowserState>({
     page: 1,
     limit: 10,
@@ -29,9 +29,9 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
     if (breedCats.length > 0) {
       setCount(breedCats.length);
 
-      if (breedCats.length === count) { // || searchParams.get('breed') === undefined) { 
-        setShowLoadMore(false);
-      }
+      // if (breedCats.length === count) { // || searchParams.get('breed') === undefined) { 
+      //   setShowLoadMore(false);
+      // }
     }
     setLoading(false);
   }, [breedCats]);
@@ -48,7 +48,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
     const selectedBreed = breeds.find(a => a.id === id) as IBreedType;
     const params = { breed: selectedBreed, page: 1, limit: catBrowserState.limit, loadMore: catBrowserState.loadMore }
     setLoading(true);
-    setShowLoadMore(true);
+    // setShowLoadMore(true);
     setCount(0);
     setCatBrowserState({ ...catBrowserState, breed: selectedBreed, page: 1 })
     selectBreedCats(params);
@@ -63,7 +63,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
 
   return (
     <Container className="mb-4">
-        <h2>Cat Browser</h2>
+        <h1>Cat Browser</h1>
         <Row className="searchBreed">
           <Col lg="3">
             <Form>
@@ -91,11 +91,7 @@ export const CatsBrowserPage: React.FunctionComponent = () => {
             )
           }
         </div>
-        {
-          ((showLoadMore && count > 0) && 
-            <Button className="btn btn-success" disabled={loading} onClick={() => loadMore()}>{loading ? 'Loading...' : 'Load more' }</Button>
-          )
-        }
+        <Button className="btn btn-success" disabled={loading} onClick={() => loadMore()}>{loading ? 'Loading...' : 'Load more' }</Button>
     </Container>
   );
 }

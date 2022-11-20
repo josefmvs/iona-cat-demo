@@ -1,6 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
-import useCats from './hooks/useCats';
-// import useBreeds from './hooks/useBreeds';
+import useBreeds from './hooks/useBreeds';
 import { ICatContextType } from '../@types/cat';
 
 interface Props {
@@ -17,7 +16,7 @@ export const CatContextProvider = ({ children }: Props): JSX.Element => {
     breedCats,
     selectedBreed,
     loadMoreBreedCats
-  } = useCats();
+  } = useBreeds();
 
   const provider = {
     breeds,
